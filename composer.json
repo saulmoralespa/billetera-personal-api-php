@@ -1,0 +1,31 @@
+{
+    "name": "saulmoralespa/billetera-personal-api-php",
+    "description": "Billetera Personal API PHP SDk",
+    "keywords": [
+        "billeterapersonal", "billeterapersonal-api",
+        "php-billeterapersonal", "api"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Saul Morales Pacheco",
+            "email": "info@saulmoralespa.com",
+            "homepage": "https://saulmoralespa.com",
+            "role": "Developer"
+        }
+    ],
+    "type": "library",
+    "require": {
+        "php": ">=7.1",
+        "guzzlehttp/guzzle": "^6.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "6.*",
+        "vlucas/phpdotenv": "^4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "BilleteraPersonal\\": "src/"
+        }
+    }
+}
