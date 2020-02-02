@@ -6,7 +6,7 @@ Billetera Personal API PHP SDk
 Use composer package manager
 
 ```bash
-composer saulmoralespa/billetera-personal-api-php
+composer require saulmoralespa/billetera-personal-api-php
 ```
 
 ```php
