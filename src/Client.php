@@ -66,7 +66,8 @@ class Client
                         "idTransaccionComercio" => $idTransaccionComercio,
                         "lineaUsuario" => $lineaUsuario,
                         "monto" => $monto
-                    ]
+                    ],
+                    "timeout" => 60
                 ]
             );
 
