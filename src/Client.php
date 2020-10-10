@@ -5,6 +5,7 @@ namespace BilleteraPersonal;
 
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Utils;
 
 class Client
 {
@@ -42,7 +43,9 @@ class Client
                 ]
             );
 
-            return self::responseJson($response);
+            $result = self::responseJson($response);
+            self::checkErros($result);
+            return $result;
 
         }catch (RequestException $exception){
             throw new \Exception($exception->getMessage());
@@ -71,7 +74,9 @@ class Client
                 ]
             );
 
-            return self::responseJson($response);
+            $result = self::responseJson($response);
+            self::checkErros($result);
+            return $result;
 
         }catch (RequestException $exception){
             throw new \Exception($exception->getMessage());
@@ -95,16 +100,27 @@ class Client
                 ]
             );
 
-            return self::responseJson($response);
+            $result = self::responseJson($response);
+            self::checkErros($result);
+            return $result;
 
         }catch (RequestException $exception){
             throw new \Exception($exception->getMessage());
         }
     }
 
+    private static function checkErros($result)
+    {
+        $code = $result->codigo ?? $result->codigoTransaccion;
+        if($code !== 0){
+            $message = $result->mensaje ?? $result->mensajeTransaccion ?? $result->estado;
+            throw new \Exception($message);
+        }
+    }
+
     public static function responseJson($response)
     {
-        return \GuzzleHttp\json_decode(
+        return Utils::jsonDecode(
             $response->getBody()->getContents()
         );
     }

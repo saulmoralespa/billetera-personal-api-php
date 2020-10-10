@@ -21,7 +21,6 @@ class BilleteraPersonalTest extends TestCase
     public function testAuth()
     {
         $response = $this->billeteraPersonal->getToken();
-        var_dump($response);
         $this->assertAttributeEquals(0, 'codigo', $response);
         $this->assertAttributeNotEmpty('mensaje', $response);
     }
@@ -31,8 +30,7 @@ class BilleteraPersonalTest extends TestCase
         $idTransaccionComercio = time();
         $lineaUsuario = "595900000000";
         $monto = "100";
-        $response = $this->billeteraPersonal->payment($idTransaccionComercio, $lineaUsuario, $monto);
-        var_dump($response);
+        $response = $this->billeteraPersonal->payment($idTransaccionComercio, $lineaUsuario, $monto);;
         $this->assertAttributeNotEmpty('mensajeTransaccion', $response);
     }
 
